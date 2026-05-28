@@ -88,12 +88,3 @@ If your service is deployed behind a reverse proxy (like Nginx, Traefik, or Cadd
 
 MIT License
 
-### Quelques conseils supplémentaires :
-- Si tu as besoin d'ajouter une variable d'environnement pour le **PORT** (plutôt que de le figer sur `8080`), tu peux modifier la ligne `let addr = SocketAddr::from(([0, 0, 0, 0], 8080));` dans ton code `main.rs` par :
-  ```rust
-  let port: u16 = std::env::var("PORT").unwrap_or_else(|_| "8080".to_string()).parse().unwrap();
-  let addr = SocketAddr::from(([0, 0, 0, 0], port));
-  ```
-  *(Et tu pourras rajouter `PORT` dans le tableau des variables d'environnement de ce README !)*
-
-  
